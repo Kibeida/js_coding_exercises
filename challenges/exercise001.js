@@ -3,13 +3,15 @@ function capitalize(word) {
 
   return word.substring(0, 1).toUpperCase() + word.substring(1 ,word.length);
   // Add your code here!
-  
 }
 
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
   // Add your code here!
+
+  console.log(firstName.substring(0,1).toUpperCase() + "." + lastName.substring(0,1).toUpperCase());
+  return firstName.substring(0,1).toUpperCase() + "." + lastName.substring(0,1).toUpperCase();
 }
 
 function addVAT(originalPrice, vatRate) {
