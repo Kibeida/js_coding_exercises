@@ -157,6 +157,7 @@ describe("createMatrix", () => {
     const result = createMatrix(2, 'num'); //actual output of the function
     const expected = [['num', 'num'], ['num', 'num']];
     expect(result).toEqual(expected);
+    
 
   });
 
