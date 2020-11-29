@@ -4,6 +4,10 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+
+  const arrayOfDigits = Array.from(String(n), Number);
+  let result = arrayOfDigits.reduce((a, b) => { return a + b; }, 0);
+  return result;
 };
 
 /**
@@ -17,6 +21,20 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+
+  let result = [];
+  let stepVal = 1;
+  if (step !== undefined) stepVal = step;
+
+  let num = start;
+  do {
+    result.push(num);
+    num += step;
+  } while (num <= end);
+
+  if (result[result.length - 1] !== end) result.push(end);
+
+  return result;
 };
 
 /**
@@ -51,6 +69,7 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
 };
 
 /**
@@ -65,6 +84,8 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+  
 };
 
 /**
@@ -79,7 +100,7 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-};
+}
 
 module.exports = {
   sumDigits,
