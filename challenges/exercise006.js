@@ -5,7 +5,16 @@
  * @returns {Number}
  */
 const sumMultiples = arr => {
-  if (arr === undefined) throw new Error("arr is required");
+  if (!arr) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("an Array is required");
+  
+  let total = 0;
+  arr.forEach(num => {
+    if (num % 3 === 0||num % 5 === 0){
+      total += num;
+    }
+  });
+  return total;
 };
 
 /**
