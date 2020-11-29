@@ -1,10 +1,10 @@
 
-const {sumMultiples, isValidDNA ,isItPrime,createMatrix,areWeCovered } = require("../challenges/exercise006");
+const { sumMultiples, isValidDNA, isItPrime, createMatrix, areWeCovered } = require("../challenges/exercise006");
 
 //console.log(sumMultiples);
 
 describe("sumMultiples", () => {
-  test ("Throws an error if not passed an array", () => {
+  test("Throws an error if not passed an array", () => {
     expect(() => {
       sumMultiples();
     }).toThrow("arr is required");
@@ -33,7 +33,7 @@ describe("sumMultiples", () => {
   });
   test("This returns 0 if none were found", () => {
     //next comparing the o/p of the function to the expected output.
-    
+
     expect(sumMultiples([1, 2, 8, 13, 7])).toBe(0);
 
   });
@@ -41,7 +41,7 @@ describe("sumMultiples", () => {
 });
 
 
- 
+
 
 describe("areWeCovered", () => {
 
@@ -50,29 +50,29 @@ describe("areWeCovered", () => {
     { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
     { name: "Osama", rota: ["Sunday"] },
     { name: "Noor", rota: ["Sunday", "Wednesday"] },
-    ];
+  ];
 
-  test("staff should be there" , () => {
+  test("staff should be there", () => {
     expect(() => {
       areWeCovered();
     }).toThrow("staff is required");
   });
 
-  test("staff should be there" , () => {
+  test("staff should be there", () => {
     expect(() => {
       areWeCovered(staff);
     }).toThrow("day is required");
   });
-  
+
 
   test("It received a staff arry for Sunday , returns true", () => {
-    const result =  areWeCovered(staff,"Sunday"); //actual output of the function
+    const result = areWeCovered(staff, "Sunday"); //actual output of the function
     const expected = true;
     expect(result).toBe(expected);
   });
 
   test("It received a staff arry for Tuesday , returns false", () => {
-    const result =  areWeCovered(staff,"Tuesday"); //actual output of the function
+    const result = areWeCovered(staff, "Tuesday"); //actual output of the function
     const expected = false;
     expect(result).toBe(expected);
   });
@@ -80,92 +80,86 @@ describe("areWeCovered", () => {
 
 
 
-  describe("isValidDNA", () => {
-    test("This must be a string" , () => {
-      //next comparing the o/p of the function to the expected output.
-      expect(() => {
-        isValidDNA();
-      }).toThrow("str is required");
-  
-    });
-  
-    test("This recived string doesnot contain 'C','G','T','A'", () => {
-      //next comparing the o/p of the function to the expected output.
-      const result = isValidDNA("avb"); //actual output of the function
-      const expected = false;
-      expect(result).toBe(expected);
-
-    });
-
-    test("This recived string does contain 'C','G','T','A'", () => {
-      //next comparing the o/p of the function to the expected output.
-      const result = isValidDNA("CGA"); //actual output of the function
-      const expected = true;
-      expect(result).toBe(expected);
-    });
+describe("isValidDNA", () => {
+  test("This must be a string", () => {
+    //next comparing the o/p of the function to the expected output.
+    expect(() => {
+      isValidDNA();
+    }).toThrow("str is required");
 
   });
 
-
-
-
-
-
-  describe("isItPrime", () => {
-    test("This must be a number" , () => {
-      //next comparing the o/p of the function to the expected output.
-      expect(() => {
-        isItPrime();
-      }).toThrow("n is required");
-  
-    });
-  
-    test("It received a prime number returns true", () => {
-      const result = isItPrime(5); //actual output of the function
-      const expected = true;
-      expect(result).toBe(expected);
-
-    });
-
-    test("It received a non prime number returns false", () => {
-      const result = isItPrime(8); //actual output of the function
-      const expected = false;
-      expect(result).toBe(expected);
-    });
-
-  });
-  
-
-
-
-
-
-
-
-  describe("createMatrix", () => {
-    test("This must be a number" , () => {
-      //next comparing the o/p of the function to the expected output.
-      expect(() => {
-        createMatrix();
-      }).toThrow("n is required");
-  
-    });
-
-    test("This must not be undefined" , () => {
-      //next comparing the o/p of the function to the expected output.
-      expect(() => {
-        createMatrix(3);
-      }).toThrow("fill is required");
-  
-    });
-  
-    test("It received a number and return an array of n arrays", () => {
-      const result = createMatrix(2,'num'); //actual output of the function
-      const expected = [['num','num'],['num','num']];
-      expect(result).toEqual(expected);
-
-    });
+  test("This string does not contain 'C','G','T','A'", () => {
+    //next comparing the o/p of the function to the expected output.
+    const result = isValidDNA("avb"); //actual output of the function
+    const expected = false;
+    expect(result).toBe(expected);
 
   });
 
-   
+  test("This string contains 'C','G','T','A'", () => {
+    //next comparing the o/p of the function to the expected output.
+    const result = isValidDNA("CGA"); //actual output of the function
+    const expected = true;
+    expect(result).toBe(expected);
+  });
+
+});
+
+
+
+describe("isItPrime", () => {
+  test("This must be a number", () => {
+    //next comparing the o/p of the function to the expected output.
+    expect(() => {
+      isItPrime();
+    }).toThrow("n is required");
+
+  });
+
+  test("It returns true a prime number is received", () => {
+    const result = isItPrime(5); //actual output of the function
+    const expected = true;
+    expect(result).toBe(expected);
+
+  });
+
+  test("It returns false if a non prime number is received", () => {
+    const result = isItPrime(8); //actual output of the function
+    const expected = false;
+    expect(result).toBe(expected);
+  });
+
+});
+
+
+
+
+
+describe("createMatrix", () => {
+  test("This must be a number", () => {
+    //next comparing the o/p of the function to the expected output.
+    expect(() => {
+      createMatrix();
+    }).toThrow("n is required");
+
+  });
+
+  test("This can not be undefined", () => {
+    //next comparing the o/p of the function to the expected output.
+    expect(() => {
+      createMatrix(3);
+    }).toThrow("fill is required");
+
+  });
+
+  test("It received a number and return an array of n arrays", () => {
+    const result = createMatrix(2, 'num'); //actual output of the function
+    const expected = [['num', 'num'], ['num', 'num']];
+    expect(result).toEqual(expected);
+
+  });
+
+});
+
+
