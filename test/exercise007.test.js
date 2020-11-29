@@ -55,10 +55,4 @@ describe("sumDigits", () => {
 
   });
 
- 
-
- 
-
-
-
-  
+   
