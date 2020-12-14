@@ -1,5 +1,5 @@
 
-const { sumMultiples, isValidDNA, isItPrime, createMatrix, areWeCovered } = require("../challenges/exercise006");
+const { sumMultiples, isValidDNA, isItPrime, createMatrix, areWeCovered, getComplementaryDNA } = require("../challenges/exercise006");
 
 //console.log(sumMultiples);
 
@@ -106,6 +106,27 @@ describe("isValidDNA", () => {
 
 });
 
+describe("getComplementaryDNA", () => {
+  test("This must be a string", () => {
+    //next comparing the o/p of the function to the expected output.
+    expect(() => {
+      getComplementaryDNA();
+    }).toThrow("str is required");
+
+  });
+  
+    test("return a string of the complementary base DNA pairs", () => {
+      expect(getComplementaryDNA("ATGC")).toBe("TACG");
+      expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+      expect(getComplementaryDNA("CGTA")).toBe("GCAT");
+    });
+  
+  
+
+  
+
+});
+
 
 
 describe("isItPrime", () => {
@@ -131,9 +152,6 @@ describe("isItPrime", () => {
   });
 
 });
-
-
-
 
 
 describe("createMatrix", () => {
