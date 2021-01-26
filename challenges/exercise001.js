@@ -18,7 +18,7 @@ function addVAT(originalPrice, vatRate) {
   if (vatRate === undefined) throw new Error("vatRate is required");
   let afterVat = (originalPrice / 100) * vatRate + originalPrice;
 
-  return afterVat % 1 === 0 ? afterVat : parseFloat(afterVat.toFixed(2));
+  return parseFloat(afterVat.toFixed(2));
 }
 
 function getSalePrice(originalPrice, reduction) {

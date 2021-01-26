@@ -2,13 +2,13 @@
  * This function takes a number, e.g. 123 and returns the sum of all its digits, e.g 6 in this example.
  * @param {Number} n
  */
-const sumDigits = n => {
-	if (n === undefined) throw new Error("n is required");
-	const arrayOfDigits = Array.from(String(n), Number);
-	let result = arrayOfDigits.reduce((a, b) => {
-		return a + b;
-	}, 0);
-	return result;
+const sumDigits = (n) => {
+  if (n === undefined) throw new Error("n is required");
+  const arrayOfDigits = Array.from(String(n), Number);
+  let result = arrayOfDigits.reduce((a, b) => {
+    return a + b;
+  }, 0);
+  return result;
 };
 /**
  * This function creates a range of numbers as an array. It received a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
@@ -19,16 +19,16 @@ const sumDigits = n => {
  * @param {Number} step
  */
 const createRange = (start, end, step) => {
-	if (start === undefined) throw new Error("start is required");
-	if (end === undefined) throw new Error("end is required");
-	let result = [];
-	let num = start;
-	do {
-		result.push(num);
-		num += step;
-	} while (num <= end);
-	if (result[result.length - 1] !== end) result.push(end);
-	return result;
+  if (start === undefined) throw new Error("start is required");
+  if (end === undefined) throw new Error("end is required");
+  let result = [];
+  let num = start;
+  do {
+    result.push(num);
+    num += step;
+  } while (num <= end);
+  if (result[result.length - 1] !== end) result.push(end);
+  return result;
 };
 /**
  * This function takes an array of user objects and their usage in minutes of various applications. The format of the data should be as follows:
@@ -60,20 +60,20 @@ const createRange = (start, end, step) => {
  * @param {Array} users
  */
 const getScreentimeAlertList = (users, date) => {
-	if (users === undefined) throw new Error("users is required");
-	if (date === undefined) throw new Error("date is required");
-	let result = [];
-	users.forEach(user => {
-		let userScreenTimeForDate = user.screenTime.filter(u => u.date == date);
-		if (userScreenTimeForDate.length !== 0) {
-			let valuesArray = Object.values(userScreenTimeForDate[0].usage);
-			var totalMinutes = valuesArray.reduce((a, b) => {
-				return a + b
-			}, 0);
-			if (totalMinutes > 100) result.push(user.username);
-		}
-	});
-	return result;
+  if (users === undefined) throw new Error("users is required");
+  if (date === undefined) throw new Error("date is required");
+  let result = [];
+  users.forEach((user) => {
+    let userScreenTimeForDate = user.screenTime.filter((u) => u.date == date);
+    if (userScreenTimeForDate.length !== 0) {
+      let valuesArray = Object.values(userScreenTimeForDate[0].usage);
+      var totalMinutes = valuesArray.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      if (totalMinutes > 100) result.push(user.username);
+    }
+  });
+  return result;
 };
 /**
  * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
@@ -85,23 +85,23 @@ const getScreentimeAlertList = (users, date) => {
  * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
  * @param {String} str
  */
-const hexToRGB = hexStr => {
-	if (hexStr === undefined) throw new Error("hexStr is required");
-	let r = 0,
-		g = 0,
-		b = 0;
-	// 3 digits
-	if (hexStr.length == 4) {
-		r = "0x" + hexStr[1] + hexStr[1];
-		g = "0x" + hexStr[2] + hexStr[2];
-		b = "0x" + hexStr[3] + hexStr[3];
-		// 6 digits
-	} else if (hexStr.length == 7) {
-		r = "0x" + hexStr[1] + hexStr[2];
-		g = "0x" + hexStr[3] + hexStr[4];
-		b = "0x" + hexStr[5] + hexStr[6];
-	}
-	return "rgb(" + +r + "," + +g + "," + +b + ")";
+const hexToRGB = (hexStr) => {
+  if (hexStr === undefined) throw new Error("hexStr is required");
+  let r = 0,
+    g = 0,
+    b = 0;
+  // 3 digits
+  if (hexStr.length == 4) {
+    r = "0x" + hexStr[1] + hexStr[1];
+    g = "0x" + hexStr[2] + hexStr[2];
+    b = "0x" + hexStr[3] + hexStr[3];
+    // 6 digits
+  } else if (hexStr.length == 7) {
+    r = "0x" + hexStr[1] + hexStr[2];
+    g = "0x" + hexStr[3] + hexStr[4];
+    b = "0x" + hexStr[5] + hexStr[6];
+  }
+  return "rgb(" + +r + "," + +g + "," + +b + ")";
 };
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
@@ -113,28 +113,44 @@ const hexToRGB = hexStr => {
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
  */
-const findWinner = board => {
-	if (board === undefined) throw new Error("board is required");
-	//horizontal
-	var winnigCombination1 = [board[0][0], board[0][1], board[0][2]];
-	var winnigCombination2 = [board[1][0], board[1][1], board[1][2]];
-	var winnigCombination3 = [board[2][0], board[2][1], board[2][2]];
-	//vertical
-	var winnigCombination4 = [board[0][0], board[1][0], board[2][0]];
-	var winnigCombination5 = [board[0][1], board[1][1], board[2][1]];
-	var winnigCombination6 = [board[0][2], board[1][2], board[2][2]];
-	var winnigCombination7 = [board[0][1], board[1][1], board[2][2]];
-	var winnigCombination8 = [board[0][2], board[1][1], board[2][0]];
-	let IsXWinner = winnigCombination1.every(val => val === 'X') || winnigCombination2.every(val => val === 'X') || winnigCombination3.every(val => val === 'X') || winnigCombination4.every(val => val === 'X') || winnigCombination5.every(val => val === 'X') || winnigCombination6.every(val => val === 'X') || winnigCombination7.every(val => val === 'X') || winnigCombination8.every(val => val === 'X');
-	if (IsXWinner) return "X";
-	let Is0Winner = winnigCombination1.every(val => val === '0') || winnigCombination2.every(val => val === '0') || winnigCombination3.every(val => val === '0') || winnigCombination4.every(val => val === '0') || winnigCombination5.every(val => val === '0') || winnigCombination6.every(val => val === '0') || winnigCombination7.every(val => val === '0') || winnigCombination8.every(val => val === '0');
-	if (Is0Winner) return "0";
-	return "null";
+const findWinner = (board) => {
+  if (board === undefined) throw new Error("board is required");
+  //horizontal
+  var winnigCombination1 = [board[0][0], board[0][1], board[0][2]];
+  var winnigCombination2 = [board[1][0], board[1][1], board[1][2]];
+  var winnigCombination3 = [board[2][0], board[2][1], board[2][2]];
+  //vertical
+  var winnigCombination4 = [board[0][0], board[1][0], board[2][0]];
+  var winnigCombination5 = [board[0][1], board[1][1], board[2][1]];
+  var winnigCombination6 = [board[0][2], board[1][2], board[2][2]];
+  var winnigCombination7 = [board[0][1], board[1][1], board[2][2]];
+  var winnigCombination8 = [board[0][2], board[1][1], board[2][0]];
+  let IsXWinner =
+    winnigCombination1.every((val) => val === "X") ||
+    winnigCombination2.every((val) => val === "X") ||
+    winnigCombination3.every((val) => val === "X") ||
+    winnigCombination4.every((val) => val === "X") ||
+    winnigCombination5.every((val) => val === "X") ||
+    winnigCombination6.every((val) => val === "X") ||
+    winnigCombination7.every((val) => val === "X") ||
+    winnigCombination8.every((val) => val === "X");
+  if (IsXWinner) return "X";
+  let Is0Winner =
+    winnigCombination1.every((val) => val === "0") ||
+    winnigCombination2.every((val) => val === "0") ||
+    winnigCombination3.every((val) => val === "0") ||
+    winnigCombination4.every((val) => val === "0") ||
+    winnigCombination5.every((val) => val === "0") ||
+    winnigCombination6.every((val) => val === "0") ||
+    winnigCombination7.every((val) => val === "0") ||
+    winnigCombination8.every((val) => val === "0");
+  if (Is0Winner) return "0";
+  return "null";
 };
 module.exports = {
-	sumDigits,
-	createRange,
-	getScreentimeAlertList,
-	hexToRGB,
-	findWinner
+  sumDigits,
+  createRange,
+  getScreentimeAlertList,
+  hexToRGB,
+  findWinner,
 };
